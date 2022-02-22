@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+% Dokumentum típusának megadása
+% Ha kiveszed, akkor nem fogja compileolni a doksit.
+% Lehetséges: 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt.
+
+\usepackage[utf8]{inputenc}
+% Input encoding megadása. Egyébként lehet más is pl. ASCII, Larin-2 stb.
+% Nem feltétlenül kell, de a különböző compilerek miatt fontos lehet.
+
+\usepackage[T1]{fontenc}
+% Output font megadása
+% Ha kiveszed, akkor nem kezeli jól az ékezetes szavakat és nem lesz másolható a PDF szövege
+
+\usepackage[magyar]{babel}
+% Magyar nyelvcsomag. Értelmezi hogy magyarul írsz.
+
+\usepackage[outer=20mm, inner=20mm, top=20mm, bottom=20mm]{geometry}
+% Megadja a margókat. Érdemes az elvárt szélességeket megadni, pl. szakdoga elvárás.
+
+\renewcommand{\baselinestretch}{1.5}
+
+\usepackage[usenames]{color}
+% A szín elnevezések használatához kell. Lásd: https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX
+\definecolor{rajk}{RGB}{63,181,97}
+% Csinálunk egy saját színt, amire később tudunk hivatkozni
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=false,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=blue,
+    pdftitle={Formális logika alapok}
+    }
+
+% \usepackage[nottoc]{tocbibind}
+\usepackage{natbib}
+
+% Not exists megjelenítése
+\usepackage{amssymb}
+
+\title{Formális logika alapok}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Műveletek}
+
+\begin{enumerate}
+    \item $\neg$: tagadás (negáció)
+    \item $\land$: és (konjukció)
+    \item $\lor$: vagy (diszjunkció)
+    \item $\oplus$: kizáró vagy (kizáró diszjunkció)
+    \item $\Rightarrow$: implikáció
+    \item $\Leftrightarrow$: ekvivalencia
+\end{enumerate}
+
+\section{Kvantorok}
+
+\begin{enumerate}
+    \item $\exists x$: létezik legalább egy $x$, amelyre igaz, hogy \dots
+    \item $\forall x$: minden $x$-re igaz, hogy \dots
+    \item $\nexists x$: nem létezik egy $x$ sem, amelyre igaz, hogy \dots
+\end{enumerate}
+
+\newpage
+\section{Órai feladatok}
+
+\noindent\textbf{Predikátumok:}
+
+\begin{itemize}
+    \item $F(x)$: $x$ férfi
+    \item $N(x)$: $x$ nő
+    \item $V(x, y)$: $x$ vonzónak tartja $y$-t
+\end{itemize}
+
+\noindent\textbf{Feladatok:}
+
+\begin{enumerate}
+    \item $d$-nek minden nő testzik:
+    \begin{center}
+        $\forall x(N(x) \Rightarrow V(d,x))$
+    \end{center}
+    
+    \item $k$ egy biszexuális nő:
+    \begin{center}
+        $\exists x(N(x) \land V(k,x)) \land \exists y(F(y) \land V(k,y)) \land N(k)$
+    \end{center}
+    
+    \item létezik aszexuális ember:
+    \begin{center}
+        $\exists x(\nexists y(V(x,y)))$\\
+        vagy\\
+        $\exists x(\forall y(\neg V(x,y)))$
+    \end{center}
+    
+    \item mindenki biszexuális:
+    \begin{center}
+        $\forall x(\exists n(N(n) \land V(x,n)) \land \exists f(F(f) \land V(x,f)))$
+    \end{center}
+    
+    \item csak a férfiak között vannak melegek:
+    \begin{center}
+    
+        $\exists f(F(f) \land \exists x(F(x) \land V(f,x)) \land \nexists y(N(y) \land V(f,y))) \land$
+        $\nexists n(N(n) \land \exists z(N(z) \land V(n,z)) \land \nexists w(F(w) \land V(n,w)))$
+    \end{center}
+\end{enumerate}
+
+\end{document}
